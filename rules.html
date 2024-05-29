@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HahaGames Rules</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Tailwind CSS via CDN */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+
+        /* Custom CSS */
+        .bg-hero-image {
+            background-image: url('/asset/img/bg3.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-rules {
+            background: rgb(23,21,47);
+            background: linear-gradient(90deg, rgba(23,21,47,1) 0%, rgba(41,41,93,1) 100%, rgba(0,212,255,1) 100%);
+        }
+        .blur-background {
+            backdrop-filter: blur(10px);
+            background: linear-gradient(90deg, rgba(23,21,47,0.95) 27%, rgba(41,41,93,0.95) 100%, rgba(0,212,255,1) 100%);
+        }
+        #navbar {
+            backdrop-filter: blur(10px);
+            background: linear-gradient(90deg, rgba(23,21,47,1) 27%, rgba(41,41,93,1) 100%, rgba(0,212,255,1) 100%);
+        }   
+    </style>
+      <script>
+        function toggleNavbar() {
+          const nav = document.getElementById('mobile-menu');
+          nav.classList.toggle('hidden');
+        }
+    
+        function copyText(text) {
+          navigator.clipboard.writeText(text).then(() => {
+            alert("Text copied to clipboard: " + text);
+          }).catch(err => {
+            alert("Failed to copy text: " + err);
+          });
+        }
+    
+        window.addEventListener('scroll', () => {
+          const navbar = document.getElementById('navbar');
+          if (window.scrollY > 50) {
+            navbar.classList.add('blur-background');
+          } else {
+            navbar.classList.remove('blur-background');
+          }
+        });
+      </script>
+</head>
+<body class="text-gray-900">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full z-10 top-0 left-0 bg--600 p-4 transition-all duration-300">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white text-xl font-bold">
+        HahaGames
+      </div>
+      <div class="md:hidden">
+        <button class="text-white focus:outline-none" onclick="toggleNavbar()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden md:flex space-x-4 text-white">
+        <a href="index.html" class="hover:text-gray-300">Home</a>
+        <a href="rules.html" class="hover:text-gray-300">Rules</a>
+        <a href="marketplace.html" class="hover:text-gray-300">Shop</a>
+        <a href="contact.html" class="hover:text-gray-300">Contact</a>
+      </div>
+    </div>
+    <div class="hidden md:hidden" id="mobile-menu">
+      <a href="index.html" class="block text-white py-2 px-4 hover:bg-blue-700">Home</a>
+      <a href="rules.html" class="block text-white py-2 px-4 hover:bg-blue-700">Rules</a>
+      <a href="marketplace.html" class="block text-white py-2 px-4 hover:bg-blue-700">Shop</a>
+      <a href="contact.html" class="block text-white py-2 px-4 hover:bg-blue-700">Contact</a>
+    </div>
+  </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="bg-hero-image bg-cover bg-center text-white flex flex-col items-center justify-center h-screen p-4 mt-16 md:mt-0">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Server Rules</h1>
+        <p class="text-lg md:text-2xl mb-8">Here are the rules you need to follow.</p>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="bg-rules text-white p-8">
+        <div class="container mx-auto">
+            <h2 class="text-2xl md:text-4xl font-bold mb-4 text-center">Rules and Regulations</h2>
+            <ul class="list-disc pl-8">
+                <li class="mb-2">Rule 1: Don't spam chat in the near future.</li>
+                <li class="mb-2">Rule 2: racism is strictly prohibited.</li>
+                <li class="mb-2">Rule 3: Respect your fellow members here!</li>
+                <li class="mb-2">Rule 4: Use the features appropriately!.</li>
+                <li class="mb-2">Rule 5: Don't be too toxic!</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <img src="asset/img/logo.png" alt="Logo" class="w-16 h-16">
+        
+        <!-- Social Media Links -->
+        <div class="flex space-x-4 items-center">
+            <a href="https://www.tiktok.com/@hahagames__" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok fa-2x text-white"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube fa-2x text-white"></i>
+            </a>
+            <a href="https://discord.gg/STPDb7rc6P" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-discord fa-2x text-white"></i>
+            </a>
+        </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            var menu = document.querySelector('nav .md\\:flex');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

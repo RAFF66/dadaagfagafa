@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HahaShop</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .hover-raise:hover {
+      transform: translateY(-5px);
+      transition: transform 0.2s;
+    }
+    .gradien{
+        background: rgb(205,205,205);
+background: linear-gradient(90deg, rgba(205,205,205,1) 0%, rgba(153,153,153,1) 100%);
+    }
+    .hover-shake:hover h2, .hover-shake:hover p {
+      animation: shake 0.5s ease-in-out infinite;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-2px); }
+      50% { transform: translateX(2px); }
+      75% { transform: translateX(-2px); }
+    }
+    header{
+        background: rgb(23,21,47);
+        background: linear-gradient(90deg, rgba(23,21,47,1) 0%, rgba(41,41,93,1) 100%, rgba(0,212,255,1) 100%);
+    }
+    .shop {
+        background: rgb(23,21,47);
+        background: linear-gradient(90deg, rgba(23,21,47,1) 0%, rgba(41,41,93,1) 100%, rgba(0,212,255,1) 100%);
+    }
+    #navbar {
+      backdrop-filter: blur(10px);
+      background: linear-gradient(90deg, rgba(23,21,47,0.95) 27%, rgba(41,41,93,0.95) 100%, rgba(0,212,255,1) 100%);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 5px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+  </style>
+   <script>
+    function toggleNavbar() {
+      const nav = document.getElementById('mobile-menu');
+      nav.classList.toggle('hidden');
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Text copied to clipboard: " + text);
+      }).catch(err => {
+        alert("Failed to copy text: " + err);
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('blur-background');
+      } else {
+        navbar.classList.remove('blur-background');
+      }
+    });
+  </script>
+</head>
+<body class="bg-gray-100">
+
+      <!-- Navbar -->
+  <nav id="navbar" class=" w-full z-10 top-0 left-0 bg--600 p-4 transition-all duration-300">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-white text-xl font-bold">
+        HahaGames
+      </div>
+      <div class="md:hidden">
+        <button class="text-white focus:outline-none" onclick="toggleNavbar()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="hidden md:flex space-x-4 text-white">
+        <a href="index.html" class="hover:text-gray-300">Home</a>
+        <a href="rules.html" class="hover:text-gray-300">Rules</a>
+        <a href="marketplace.html" class="hover:text-gray-300">Shop</a>
+        <a href="contact.html" class="hover:text-gray-300">Contact</a>
+      </div>
+    </div>
+    <div class="hidden md:hidden" id="mobile-menu">
+      <a href="index.html" class="block text-white py-2 px-4 hover:bg-blue-700">Home</a>
+      <a href="rules.html" class="block text-white py-2 px-4 hover:bg-blue-700">Rules</a>
+      <a href="marketplace.html" class="block text-white py-2 px-4 hover:bg-blue-700">Shop</a>
+      <a href="contact.html" class="block text-white py-2 px-4 hover:bg-blue-700">Contact</a>
+    </div>
+  </nav>
+
+  <header class="bg-blue-600 p-6 text-white text-center">
+    <h1 class="text-3xl font-bold">Haha Shop</h1>
+    <p class="text-lg mt-2"></p>
+  </header>
+
+  <main class="p-6 shop">
+    <section class= "max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Product 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover-raise hover-shake cursor-pointer">
+        <img src="asset/img/rank_vip.png" alt="Product 1" class="w-full max-w-full max-h-full object-cover mb-4 rounded">
+        <h2 class="text-xl font-bold mb-2">VIP</h2>
+        <p class="text-gray-700 mb-4">5000</p>
+        <a href="#" onclick="openModal('modal1')" class="text-blue-500">Tampilkan Detail</a>
+      </div>
+      <!-- Product 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover-raise hover-shake cursor-pointer">
+        <img src="asset/img/rank_vip+.png" alt="Product 2" class="w-full max-w-full max-h-full object-cover mb-4 rounded">
+        <h2 class="text-xl font-bold mb-2">VIP+</h2>
+        <p class="text-gray-700 mb-4">10000</p>
+        <a href="#" onclick="openModal('modal2')" class="text-blue-500">Tampilkan Detail</a>
+      </div>
+      <!-- Product 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover-raise hover-shake cursor-pointer">
+        <img src="asset/img/rank_mvp.png" alt="Product 3" class="w-full max-w-full max-h-full object-cover mb-4 rounded">
+        <h2 class="text-xl font-bold mb-2">MVP</h2>
+        <p class="text-gray-700 mb-4">15000</p>
+        <a href="#" onclick="openModal('modal3')" class="text-blue-500">Tampilkan Detail</a>
+      </div>
+      <!-- Product 4 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover-raise hover-shake cursor-pointer">
+        <img src="asset/img/rank_mvp+.png" alt="Product 4" class="w-full max-w-full max-h-full object-cover mb-4 rounded">
+        <h2 class="text-xl font-bold mb-2">MVP+</h2>
+        <p class="text-gray-700 mb-4">20000</p>
+        <a href="#" onclick="openModal('modal4')" class="text-blue-500">Tampilkan Detail</a>
+      </div>
+      <!-- Product 5 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover-raise hover-shake cursor-pointer">
+        <img src="asset/img/coin_many.png" alt="Product 5" class="w-full max-w-full max-h-full object-cover mb-4 rounded">
+        <h2 class="text-xl font-bold mb-2">1.000.000 money</h2>
+        <p class="text-gray-700 mb-4">10000</p>
+        <a href="#" onclick="openModal('modal5')" class="text-blue-500">Tampilkan Detail</a>
+      </div>
+      <!-- Product 6 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover-raise hover-shake cursor-pointer">
+        <img src="asset/img/coin_chest.png" alt="Product 6" class="w-full max-w-full max-h-full object-cover mb-4 rounded">
+        <h2 class="text-xl font-bold mb-2">5.000.000 money</h2>
+        <p class="text-gray-700 mb-4">15000</p>
+        <a href="#" onclick="openModal('modal6')" class="text-blue-500">Tampilkan Detail</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>VIP</h2>
+      <h1>One Purchase</h1>
+      <ul>
+          <li>100.000 money</li>
+          <li>2 rare crates key</li>
+          <li>3 common crates key</li>
+          <li>sellwand tier 2</li>
+          <li>+ 2000 bonus claims block</li>
+      </ul>
+      <h2>Command</h2>
+      <ul>
+          <li>access to /anvil</li>
+      </ul>
+      <a href="https://discord.gg/dPPnRz3uk3" class="text-blue-500">Shop now</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>VIP+</h2>
+      <h1>One Purchase</h1>
+    <ul>
+        <li>400.000 money</li>
+        <li>3 rare crates key</li>
+        <li>5 common crates key</li>
+        <li>1 Legendary crates key</li>
+        <li>sellwand tier 2</li>
+        <li>+ 4000 bonus claims block</li>
+    </ul>
+    <h2>Command</h2>
+    <ul>
+        <li>access to /anvil</li>
+        <li>access to /back (back on death)</li>
+    </ul>
+      <a href="https://discord.gg/dPPnRz3uk3" class="text-blue-500">Shop now</a>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h2>MVP</h2>
+      <h1>One Purchase</h1>
+      <ul>
+          <li>600.000 money</li>
+          <li>5 rare crates key</li>
+          <li>6 common crates key</li>
+          <li>3 Legendary crates key</li>
+          <li>sellwand tier 3</li>
+          <li>+ 6000 bonus claims block</li>
+      </ul>
+      <h2>Command</h2>
+      <ul>
+          <li>access to /anvil</li>
+          <li>access to /back (back on death)</li>
+          <li>access to /fly</li>
+      </ul>  
+      <a href="https://discord.gg/dPPnRz3uk3" class="text-blue-500">Shop now</a>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal4')">&times;</span>
+      <h2>MVP+</h2>
+      <h1>One Purchase</h1>
+      <ul>
+          <li>800.000 money</li>
+          <li>7 rare crates key</li>
+          <li>9 common crates key</li>
+          <li>4 Legendary crates key</li>
+          <li>sellwand tier 3</li>
+          <li>+ 8000 bonus claims block</li>
+      </ul>
+      <h2>Command</h2>
+      <ul>
+          <li>access to /anvil</li>
+          <li>access to /back (back on death)</li>
+          <li>access to /fly</li>
+          <li>access to /ec (enderchest)</li>
+      </ul>
+      <a href="https://discord.gg/dPPnRz3uk3" class="text-blue-500">Shop now</a>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal5')">&times;</span>
+      <h2>1.000.000 money</h2>
+      <p>Get 1.000.000 money.</p>
+      <a href="https://discord.gg/dPPnRz3uk3" class="text-blue-500">Shop now</a>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal6')">&times;</span>
+      <h2>5.000.000 money</h2>
+      <p>Get 5.000.000 money.</p>
+      <a href="https://discord.gg/dPPnRz3uk3" class="text-blue-500">Shop now</a>
+    </div>
+  </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <img src="asset/img/logo.png" alt="Logo" class="w-16 h-16">
+        
+        <!-- Social Media Links -->
+        <div class="flex space-x-4 items-center">
+            <a href="https://www.tiktok.com/@hahagames__" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok fa-2x text-white"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube fa-2x text-white"></i>
+            </a>
+            <a href="https://discord.gg/STPDb7rc6P" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-discord fa-2x text-white"></i>
+            </a>
+        </div>
+        </div>
+    </footer>
+
+    <script>
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
+  
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+    </script>
+</body>
+</html>
